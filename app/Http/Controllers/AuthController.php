@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -64,7 +65,7 @@ class AuthController extends Controller
         $newToken = Auth::guard('api')->refresh();
 
         return response()->json([
-            'access_token' => $token, 
+            'access_token' => $newToken, 
             'token_type' => 'Bearer', 
             'expires_in' => auth()->factory()->getTTL() * 60
             ]);
