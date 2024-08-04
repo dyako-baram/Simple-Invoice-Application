@@ -26,7 +26,11 @@ class AuthController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json([
+            'access_token' => $token, 
+            'token_type' => 'Bearer', 
+            'expires_in' => auth()->factory()->getTTL() * 60
+            ]);
     }
 
     public function login(Request $request)
@@ -41,7 +45,11 @@ class AuthController extends Controller
             return response()->json(['message' => 'Could not create token'], 500);
         }
 
-        return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json([
+            'access_token' => $token, 
+            'token_type' => 'Bearer', 
+            'expires_in' => auth()->factory()->getTTL() * 60
+            ]);
     }
 
     public function logout()
@@ -55,7 +63,11 @@ class AuthController extends Controller
     {
         $newToken = Auth::guard('api')->refresh();
 
-        return response()->json(['access_token' => $newToken, 'token_type' => 'Bearer']);
+        return response()->json([
+            'access_token' => $token, 
+            'token_type' => 'Bearer', 
+            'expires_in' => auth()->factory()->getTTL() * 60
+            ]);
     }
 
     public function changePassword(Request $request)

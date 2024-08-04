@@ -10,9 +10,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('change-password', [AuthController::class, 'changePassword']);
-    Route::get('me', [AuthController::class, 'me']);
+    Route::get('me', [AuthController::class, 'me'])->middleware('auth.api');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
