@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        return Customer::all();
+        $customers = Customer::where('user_id', Auth::id())->get();
+        return response()->json($customers);
     }
 
     public function store(Request $request)
@@ -22,19 +24,20 @@ class CustomerController extends Controller
             'balance' => 'required|numeric|min:0',
         ]);
 
-        $customer = Customer::create($validated);
+        $customer = Customer::create(array_merge($validated, ['user_id' => Auth::id()]));
 
         return response()->json($customer, 201);
     }
 
     public function show($id)
     {
-        return Customer::findOrFail($id);
+        $customer = Customer::where('user_id', Auth::id())->findOrFail($id);
+        return response()->json($customer);
     }
 
     public function update(Request $request, $id)
     {
-        $customer = Customer::findOrFail($id);
+        $customer = Customer::where('user_id', Auth::id())->findOrFail($id);
 
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -51,7 +54,7 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-        $customer = Customer::findOrFail($id);
+        $customer = Customer::where('user_id', Auth::id())->findOrFail($id);
         $customer->delete();
 
         return response()->json(null, 204);

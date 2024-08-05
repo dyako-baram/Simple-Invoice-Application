@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,7 +11,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::all();
+        $products = Product::where('user_id', Auth::id())->get();
+        return response()->json($products);
     }
 
     public function store(Request $request)
@@ -29,19 +31,20 @@ class ProductController extends Controller
             $validated['product_image'] = $path;
         }
 
-        $product = Product::create($validated);
+        $product = Product::create(array_merge($validated, ['user_id' => Auth::id()]));
 
         return response()->json($product, 201);
     }
 
     public function show($id)
     {
-        return Product::findOrFail($id);
+        $product = Product::where('user_id', Auth::id())->findOrFail($id);
+        return response()->json($product);
     }
 
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('user_id', Auth::id())->findOrFail($id);
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -67,7 +70,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('user_id', Auth::id())->findOrFail($id);
         if ($product->product_image) {
             Storage::delete($product->product_image);
         }

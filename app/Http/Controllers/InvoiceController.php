@@ -7,15 +7,20 @@ use App\Models\Invoice;
 use App\Models\InvoiceLine;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class InvoiceController extends Controller
 {
     public function index()
     {
-        return Invoice::with('customer', 'invoiceLines')->get();
-    }
+        $invoices = Invoice::where('user_id', Auth::id())
+                        ->with('customer', 'invoiceLines')
+                        ->get();
 
+        return response()->json($invoices);
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -27,10 +32,18 @@ class InvoiceController extends Controller
             'invoice_lines.*.line_price' => 'required|numeric|min:0',
         ]);
 
-        $customer = Customer::findOrFail($validated['customer_id']);
+        $taxRate = (float) Setting::where('user_id', Auth::id())->first()->tax_rate;
+        $taxThreshold = (float) Setting::where('user_id', Auth::id())->first()->tax_threshold;
+
+        $customer = Customer::where('user_id', Auth::id())->findOrFail($validated['customer_id']);
         $invoice_total = array_reduce($validated['invoice_lines'], function ($total, $line) {
             return $total + ($line['quantity'] * $line['line_price']);
         }, 0);
+
+        if ($invoice_total >= $taxThreshold) {
+            $taxAmount = $invoice_total * ($taxRate / 100);
+            $invoice_total += $taxAmount;
+        }
 
         if ($customer->balance < $invoice_total) {
             return response()->json(['message' => 'Insufficient balance'], 400);
@@ -38,10 +51,11 @@ class InvoiceController extends Controller
 
         DB::transaction(function () use ($validated, $invoice_total, $customer) {
             $invoice = Invoice::create([
-                'invoice_unique_id' => now()->year . '-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT),
+                'invoice_unique_id' => now()->year . '-' . str_pad(Invoice::where('user_id', Auth::id())->count() + 1, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => $validated['invoice_date'],
                 'customer_id' => $validated['customer_id'],
                 'invoice_total' => $invoice_total,
+                'user_id' => Auth::id(), // Associate invoice with the user
             ]);
 
             foreach ($validated['invoice_lines'] as $line) {
@@ -52,7 +66,7 @@ class InvoiceController extends Controller
                     'line_price' => $line['quantity'] * $line['line_price'],
                 ]);
 
-                $product = Product::find($line['item_id']);
+                $product = Product::findOrFail($line['item_id']);
                 $product->quantity_on_hand -= $line['quantity'];
                 $product->save();
             }
@@ -66,17 +80,18 @@ class InvoiceController extends Controller
 
     public function show($id)
     {
-        return Invoice::with('customer', 'invoiceLines')->findOrFail($id);
+        $invoice = Invoice::where('user_id', Auth::id())->with('customer', 'invoiceLines')->findOrFail($id);
+        return response()->json($invoice);
     }
 
-    public function update(Request $request, $id)
-    {
-        $invoice = Invoice::findOrFail($id);
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $invoice = Invoice::where('user_id', Auth::id())->findOrFail($id);
+    // }
 
     public function destroy($id)
     {
-        $invoice = Invoice::findOrFail($id);
+        $invoice = Invoice::where('user_id', Auth::id())->findOrFail($id);
         $invoice->delete();
 
         return response()->json(null, 204);
