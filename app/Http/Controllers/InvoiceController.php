@@ -32,8 +32,8 @@ class InvoiceController extends Controller
             'invoice_lines.*.line_price' => 'required|numeric|min:0',
         ]);
 
-        $taxRate = (float) Setting::where('user_id', Auth::id())->first()->tax_rate;
-        $taxThreshold = (float) Setting::where('user_id', Auth::id())->first()->tax_threshold;
+        $taxRate = (float) (Setting::first()->tax_rate ?? 5);
+        $taxThreshold = 50;
 
         $customer = Customer::where('user_id', Auth::id())->findOrFail($validated['customer_id']);
         $invoice_total = array_reduce($validated['invoice_lines'], function ($total, $line) {
@@ -54,8 +54,9 @@ class InvoiceController extends Controller
                 'invoice_unique_id' => now()->year . '-' . str_pad(Invoice::where('user_id', Auth::id())->count() + 1, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => $validated['invoice_date'],
                 'customer_id' => $validated['customer_id'],
+                'tax_rate' => Setting::first()->tax_rate,
                 'invoice_total' => $invoice_total,
-                'user_id' => Auth::id(), // Associate invoice with the user
+                'user_id' => Auth::id(), 
             ]);
 
             foreach ($validated['invoice_lines'] as $line) {
@@ -84,10 +85,10 @@ class InvoiceController extends Controller
         return response()->json($invoice);
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $invoice = Invoice::where('user_id', Auth::id())->findOrFail($id);
-    // }
+    public function update(Request $request, $id)
+    {
+        $invoice = Invoice::where('user_id', Auth::id())->findOrFail($id);
+    }
 
     public function destroy($id)
     {

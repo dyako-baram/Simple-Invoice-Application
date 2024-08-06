@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
-    protected $fillable = ['tax_rate', 'tax_threshold', 'user_id'];
+    protected $fillable = ['tax_rate'];
 
     public function user()
     {

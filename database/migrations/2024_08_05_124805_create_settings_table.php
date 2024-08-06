@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->decimal('tax_rate', 5, 2);
-            $table->decimal('tax_threshold', 10, 2);
             $table->timestamps();
         });
     }

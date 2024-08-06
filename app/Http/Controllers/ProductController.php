@@ -11,8 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('user_id', Auth::id())->get();
-        return response()->json($products);
+        return Product::where('user_id', Auth::id())->with('supplier')->get();
     }
 
     public function store(Request $request)
@@ -22,7 +21,7 @@ class ProductController extends Controller
             'barcode' => 'required|string|max:255|unique:products',
             'quantity_on_hand' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
-            'supplier' => 'required|string|max:255',
+            'supplier_id' => 'required|exists:suppliers,id',
             'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -38,8 +37,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::where('user_id', Auth::id())->findOrFail($id);
-        return response()->json($product);
+        return Product::where('user_id', Auth::id())->with('supplier')->findOrFail($id);
     }
 
     public function update(Request $request, $id)
@@ -51,7 +49,7 @@ class ProductController extends Controller
             'barcode' => 'required|string|max:255|unique:products,barcode,' . $product->id,
             'quantity_on_hand' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
-            'supplier' => 'required|string|max:255',
+            'supplier_id' => 'required|exists:suppliers,id',
             'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
