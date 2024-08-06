@@ -32,7 +32,7 @@ class InvoiceController extends Controller
             'invoice_lines.*.line_price' => 'required|numeric|min:0',
         ]);
 
-        $taxRate = (float) (Setting::first()->tax_rate ?? 5);
+        $taxRate = (float) (optional(Setting::first())->tax_rate ?? 5);
         $taxThreshold = 50;
 
         $customer = Customer::where('user_id', Auth::id())->findOrFail($validated['customer_id']);
@@ -60,8 +60,9 @@ class InvoiceController extends Controller
             ]);
 
             foreach ($validated['invoice_lines'] as $line) {
-                InvoiceLine::create([
+                 InvoiceLine::create([
                     'invoice_id' => $invoice->id,
+                    'user_id' => Auth::id(),
                     'item_id' => $line['item_id'],
                     'quantity' => $line['quantity'],
                     'line_price' => $line['quantity'] * $line['line_price'],

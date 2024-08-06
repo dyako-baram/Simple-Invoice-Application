@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SettingController;
 
 
 Route::middleware('api')->group(function (){
@@ -24,6 +25,7 @@ Route::middleware(['api','auth:api'])->group(function () {
     Route::ApiResource('invoice', InvoiceController::class);
     Route::ApiResource('product', ProductController::class);
     Route::ApiResource('supplier', SupplierController::class);
+    Route::ApiResource('setting', SettingController::class);
 
 
 });
