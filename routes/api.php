@@ -7,7 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TaxRateController;
 
 
 Route::middleware('api')->group(function (){
@@ -25,7 +25,9 @@ Route::middleware(['api','auth:api'])->group(function () {
     Route::ApiResource('invoice', InvoiceController::class);
     Route::ApiResource('product', ProductController::class);
     Route::ApiResource('supplier', SupplierController::class);
-    Route::ApiResource('setting', SettingController::class);
+    Route::get('taxrate', [TaxRateController::class,'getTaxRate']);
+    Route::get('resettaxrate', [TaxRateController::class,'resetTaxRate']);
+    Route::post('taxrate', [TaxRateController::class,'updateTaxRate']);
 
 
 });

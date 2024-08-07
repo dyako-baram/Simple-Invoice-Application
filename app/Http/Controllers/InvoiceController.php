@@ -7,7 +7,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceLine;
 use App\Models\Customer;
 use App\Models\Product;
-use App\Models\Setting;
+use App\Helpers\TaxRateHelper;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -32,7 +32,7 @@ class InvoiceController extends Controller
             'invoice_lines.*.line_price' => 'required|numeric|min:0',
         ]);
 
-        $taxRate = (float) (optional(Setting::first())->tax_rate ?? 5);
+        $taxRate = TaxRateHelper::getTaxRate();
         $taxThreshold = 50;
 
         $customer = Customer::where('user_id', Auth::id())->findOrFail($validated['customer_id']);
@@ -54,7 +54,7 @@ class InvoiceController extends Controller
                 'invoice_unique_id' => now()->year . '-' . str_pad(Invoice::where('user_id', Auth::id())->count() + 1, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => $validated['invoice_date'],
                 'customer_id' => $validated['customer_id'],
-                'tax_rate' => Setting::first()->tax_rate,
+                'tax_rate' => TaxRateHelper::getTaxRate(),
                 'invoice_total' => $invoice_total,
                 'user_id' => Auth::id(), 
             ]);

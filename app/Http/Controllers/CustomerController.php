@@ -38,7 +38,7 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $customer = Customer::where('user_id', Auth::id())->findOrFail($id);
-
+ 
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
