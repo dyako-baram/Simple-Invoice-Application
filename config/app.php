@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-
+    'tax_rate' => env('TAX_RATE', 5.00),
     /*
     |--------------------------------------------------------------------------
     | Application Name
