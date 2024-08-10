@@ -20,6 +20,7 @@ Route::middleware(['api','auth:api'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('change-password', [AuthController::class, 'changePassword']);
     Route::get('me', [AuthController::class, 'me']);
+    Route::delete('me', [AuthController::class, 'destroy']);
 
     Route::ApiResource('customer', CustomerController::class);
     Route::ApiResource('invoice', InvoiceController::class);

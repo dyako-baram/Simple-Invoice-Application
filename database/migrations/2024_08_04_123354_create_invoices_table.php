@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('invoice_unique_id')->unique();
             $table->date('invoice_date');
-            $table->foreignId('customer_id')->constrained();
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->decimal('tax_rate', 5, 2)->default(0);
             $table->decimal('invoice_total', 10, 2);
             $table->timestamps();

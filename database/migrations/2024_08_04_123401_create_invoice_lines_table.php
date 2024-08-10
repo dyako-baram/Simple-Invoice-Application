@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('invoice_lines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('invoice_id')->constrained();
-            $table->foreignId('item_id')->constrained('products');
+            $table->foreignId('invoice_id')->constrained('invoices')->onDelete('cascade');
+            $table->foreignId('item_id')->constrained('products')->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('line_price', 10, 2);
             $table->timestamps();

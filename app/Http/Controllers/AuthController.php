@@ -126,4 +126,15 @@ class AuthController extends Controller
             return response()->json(['message' => 'Could not retrieve user information'], 500);
         }
     }
+    public function destroy()
+    {
+        try {
+            $user = Auth::user();
+            $user->delete();
+            return response()->json(['message' => 'User deleted successfully']);
+        } catch (\Exception $e) {
+            Log::error('Error deleting user: ' . $e->getMessage());
+            return response()->json(['message' => 'User deletion failed'], 500);
+        }
+    }
 }

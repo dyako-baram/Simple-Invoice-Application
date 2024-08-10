@@ -77,10 +77,7 @@ class CustomerController extends Controller
     {
         try {
             $customer = Customer::where('user_id', Auth::id())->findOrFail($id);
-            $customer->invoices()->delete();
-            
             $customer->delete();
-
             return response()->json(null, 204);
         } catch (\Exception $e) {
             Log::error('Error deleting customer: ' . $e->getMessage());
