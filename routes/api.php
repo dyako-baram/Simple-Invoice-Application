@@ -29,6 +29,4 @@ Route::middleware(['api','auth:api'])->group(function () {
     Route::get('taxrate', [TaxRateController::class,'getTaxRate']);
     Route::get('resettaxrate', [TaxRateController::class,'resetTaxRate']);
     Route::post('taxrate', [TaxRateController::class,'updateTaxRate']);
-
-
 });
