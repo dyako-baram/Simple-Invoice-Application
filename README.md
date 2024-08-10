@@ -3,10 +3,13 @@
 This is a Laravel-based web application that manages products, suppliers, customers, invoices, and more. The application provides RESTful API endpoints for managing resources and includes features like authentication, data validation, file handling,log viewing and database interactions.
 
 ## Note
-the `.env` file has been excluded from the `.gitignore` file for the sake of simplicity 
+- the `.env` file has been excluded from the `.gitignore` file for the sake of simplicity 
 
-make sure to set the Global Enviroment variable of the web server `http://127.0.0.1:8000` as `BASE_URL` in postman 
+- make sure to set the Global Enviroment variable of the web server `http://127.0.0.1:8000` as `BASE_URL` in postman 
 
+- The Tax Rate value is saved in `.env` file and its being read from the file into the server cache (for faster read)
+when updating the value both the cache and `.env` file update if the change was from `.env`
+directly then the `api/resettaxrate` endpoint should be requested in order to refresh the cache
 ## Features
 - Log viewing using [Log viewer](https://github.com/opcodesio/log-viewer)
 - User Authentication: Secured routes with user-specific data access.
