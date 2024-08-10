@@ -27,7 +27,7 @@ class CustomerController extends Controller
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'address' => 'required|string|max:255',
-                'phone' => 'required|string|max:15',
+                'phone' => 'required|string|max:15|unique:customers',
                 'balance' => 'required|numeric|min:0',
             ]);
 

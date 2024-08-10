@@ -60,12 +60,12 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        try {
+         try {
             $product = Product::where('user_id', Auth::id())->findOrFail($id);
 
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
-                'barcode' => 'required|string|max:255|unique:products,barcode,' . $product->id,
+                'barcode' => 'required|string|max:255',
                 'quantity_on_hand' => 'required|integer|min:0',
                 'price' => 'required|numeric|min:0',
                 'supplier_id' => 'required|exists:suppliers,id',

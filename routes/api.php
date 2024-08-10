@@ -24,6 +24,7 @@ Route::middleware(['api','auth:api','throttle:api'])->group(function () {
 
     Route::ApiResource('customer', CustomerController::class);
     Route::ApiResource('invoice', InvoiceController::class);
+    Route::post('update-product/{id}', [ProductController::class,'update']);
     Route::ApiResource('product', ProductController::class);
     Route::ApiResource('supplier', SupplierController::class);
     Route::get('taxrate', [TaxRateController::class,'getTaxRate']);
