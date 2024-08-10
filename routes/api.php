@@ -10,12 +10,12 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TaxRateController;
 
 
-Route::middleware('api')->group(function (){
+Route::middleware(['api','throttle:api'])->group(function (){
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
 });
 
-Route::middleware(['api','auth:api'])->group(function () {
+Route::middleware(['api','auth:api','throttle:api'])->group(function () {
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('change-password', [AuthController::class, 'changePassword']);
