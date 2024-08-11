@@ -181,13 +181,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMTA4NzA5LCJleHAiOjE3MjMxMTIzMDksIm5iZiI6MTcyMzEwODcwOSwianRpIjoiMWtuUm5teDlwNWZ2OVp4diIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gQf0bbIDT-9U4Ty5HtYUuOVcGNUm1KZ4ekSaoP2kt5A",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -228,11 +234,6 @@
 								"key": "Connection",
 								"value": "keep-alive",
 								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -253,10 +254,23 @@
 					"name": "Refresh Token",
 					"request": {
 						"auth": {
-							"type": "bearer"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -303,11 +317,6 @@
 								"key": "Connection",
 								"value": "keep-alive",
 								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -328,7 +337,14 @@
 					"name": "logout",
 					"request": {
 						"auth": {
-							"type": "bearer"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -379,21 +395,16 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/api/logout",
+							"raw": "{{BASE_URL}}/api/Logout",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
-								"logout"
+								"Logout"
 							]
 						}
 					},
@@ -403,7 +414,14 @@
 					"name": "Change Password",
 					"request": {
 						"auth": {
-							"type": "bearer"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -497,13 +515,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMjc5OTE0LCJleHAiOjE3MjMyODM1MTQsIm5iZiI6MTcyMzI3OTkxNCwianRpIjoiamJBM2paZlR2REpyRlFrTyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-T5_cynjljEwJB3uOyci4e8w7grYnvEINbE6LH-uj28",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "DELETE",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -545,11 +569,6 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -578,7 +597,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMjc5OTE0LCJleHAiOjE3MjMyODM1MTQsIm5iZiI6MTcyMzI3OTkxNCwianRpIjoiamJBM2paZlR2REpyRlFrTyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-T5_cynjljEwJB3uOyci4e8w7grYnvEINbE6LH-uj28",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -646,14 +665,14 @@
 								"type": "text"
 							},
 							{
-								"key": "accept",
+								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\":\"john\",\r\n    \"last_name\":\"doe\",\r\n    \"address\":\"that street\",\r\n    \"phone\": \"0123546789\",\r\n    \"balance\":\"1500\"\r\n}",
+							"raw": "{\r\n    \"first_name\":\"john\",\r\n    \"last_name\":\"doe\",\r\n    \"address\":\"that street\",\r\n    \"phone\": \"0123546789\",\r\n    \"balance\":\"200\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -674,8 +693,18 @@
 					"response": []
 				},
 				{
-					"name": "get by id",
+					"name": "Get by id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -719,16 +748,6 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjUwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyOTM4ODUwLCJleHAiOjE3MjI5NDI0NTAsIm5iZiI6MTcyMjkzODg1MCwianRpIjoib0U5Y1lsc0RJUkN6d3dKSyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.E3PQGFaQ7c46L7Pxy-1olmVN0O3upyyhDN59ibKEkIg",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -746,14 +765,14 @@
 					"response": []
 				},
 				{
-					"name": "get all customers",
+					"name": "Get all customers",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMjc0OTY3LCJleHAiOjE3MjMyNzg1NjcsIm5iZiI6MTcyMzI3NDk2NywianRpIjoieXFuNDVsVFVlU2VHaTd3TiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FwsHG4eteKGNlo5D312N3kC6nc8rysO5aUMOJBVF-ZU",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -807,11 +826,6 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -835,13 +849,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "DELETE",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -883,36 +903,31 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/api/customer/2",
+							"raw": "{{BASE_URL}}/api/customer/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"customer",
-								"2"
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "update customer",
+					"name": "Update customer",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -975,7 +990,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\":\"john updated\",\r\n    \"last_name\":\"doe updated\",\r\n    \"address\":\"that street\",\r\n    \"phone\": \"0123546789\",\r\n    \"balance\":\"1500\"\r\n}",
+							"raw": "{\r\n    \"first_name\":\"john updated\",\r\n    \"last_name\":\"doe updated\",\r\n    \"address\":\"that street\",\r\n    \"phone\": \"0123546789\",\r\n    \"balance\":\"300\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -983,14 +998,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/customer/3",
+							"raw": "{{BASE_URL}}/api/customer/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"customer",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -1009,7 +1024,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMjc5OTE0LCJleHAiOjE3MjMyODM1MTQsIm5iZiI6MTcyMzI3OTkxNCwianRpIjoiamJBM2paZlR2REpyRlFrTyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-T5_cynjljEwJB3uOyci4e8w7grYnvEINbE6LH-uj28",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1078,7 +1093,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"customer_id\": 1,\r\n    \"invoice_date\": \"2023-08-06\",\r\n    \"invoice_lines\": [\r\n        {\r\n            \"item_id\": 1,\r\n            \"quantity\": 2,\r\n            \"line_price\": 22.00\r\n        }\r\n    ]\r\n}\r\n",
+							"raw": "{\r\n    \"customer_id\": 1,\r\n    \"invoice_lines\": [\r\n        {\r\n            \"item_id\": 1,\r\n            \"quantity\": 2,\r\n            \"line_price\": 22.00\r\n        }\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1099,14 +1114,14 @@
 					"response": []
 				},
 				{
-					"name": "update Invoice",
+					"name": "Update Invoice",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1175,7 +1190,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"customer_id\": 3,\r\n    \"invoice_date\": \"2023-08-06\",\r\n    \"invoice_lines\": [\r\n        {\r\n            \"item_id\": 2,\r\n            \"quantity\": 3,\r\n            \"line_price\": 21.00\r\n        }\r\n    ]\r\n}\r\n",
+							"raw": "{\r\n    \"customer_id\": 1,\r\n    \"invoice_date\": \"2023-08-11\",\r\n    \"invoice_lines\": [\r\n        {\r\n            \"item_id\": 1,\r\n            \"quantity\": 3,\r\n            \"line_price\": 23.00\r\n        }\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1183,13 +1198,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/invoice",
+							"raw": "{{BASE_URL}}/api/invoice/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
-								"invoice"
+								"invoice",
+								"1"
 							]
 						}
 					},
@@ -1203,13 +1219,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTM0MzEzLCJleHAiOjE3MjMxMzc5MTMsIm5iZiI6MTcyMzEzNDMxNCwianRpIjoiMWdmeWt3czJhZnFGQ1o4MSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G7vw-kWCIny2DXQiggEHTspPQ2oH9NhOf50zVarlT6o",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTM0MzEzLCJleHAiOjE3MjMxMzc5MTMsIm5iZiI6MTcyMzEzNDMxNCwianRpIjoiMWdmeWt3czJhZnFGQ1o4MSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G7vw-kWCIny2DXQiggEHTspPQ2oH9NhOf50zVarlT6o",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -1250,11 +1272,6 @@
 								"key": "Connection",
 								"value": "keep-alive",
 								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -1279,89 +1296,12 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTk4NTE4LCJleHAiOjE3MjMyMDIxMTgsIm5iZiI6MTcyMzE5ODUxOCwianRpIjoiczlhWkM4V3djQXdaTEhzOCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xszYHB6dwb77T7RxfWZErzfRwDWxqQApBki7XJ15nfQ",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Cache-Control",
-								"value": "no-cache",
-								"name": "cache-control",
-								"type": "text"
-							},
-							{
-								"key": "Postman-Token",
-								"value": "<calculated when request is sent>",
-								"name": "postman-token",
-								"type": "text"
-							},
-							{
-								"key": "Host",
-								"value": "<calculated when request is sent>",
-								"name": "host",
-								"type": "text"
-							},
-							{
-								"key": "User-Agent",
-								"value": "PostmanRuntime/7.39.1",
-								"name": "user-agent",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "*/*",
-								"name": "accept",
-								"type": "text"
-							},
-							{
-								"key": "Accept-Encoding",
-								"value": "gzip, deflate, br",
-								"name": "accept-encoding",
-								"type": "text"
-							},
-							{
-								"key": "Connection",
-								"value": "keep-alive",
-								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{BASE_URL}}/api/invoice/1",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"api",
-								"invoice",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete invoice by Id",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTk4NTE4LCJleHAiOjE3MjMyMDIxMTgsIm5iZiI6MTcyMzE5ODUxOCwianRpIjoiczlhWkM4V3djQXdaTEhzOCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xszYHB6dwb77T7RxfWZErzfRwDWxqQApBki7XJ15nfQ",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
@@ -1410,10 +1350,83 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/invoice/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete invoice by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
 								"type": "text"
 							}
 						],
@@ -1444,7 +1457,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTM0MzEzLCJleHAiOjE3MjMxMzc5MTMsIm5iZiI6MTcyMzEzNDMxNCwianRpIjoiMWdmeWt3czJhZnFGQ1o4MSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G7vw-kWCIny2DXQiggEHTspPQ2oH9NhOf50zVarlT6o",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1534,14 +1547,14 @@
 					"response": []
 				},
 				{
-					"name": "update Supplier",
+					"name": "Update Supplier",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1618,14 +1631,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/supplier/2",
+							"raw": "{{BASE_URL}}/api/supplier/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"supplier",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -1639,7 +1652,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTk4NTE4LCJleHAiOjE3MjMyMDIxMTgsIm5iZiI6MTcyMzE5ODUxOCwianRpIjoiczlhWkM4V3djQXdaTEhzOCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xszYHB6dwb77T7RxfWZErzfRwDWxqQApBki7XJ15nfQ",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1692,11 +1705,6 @@
 								"key": "Connection",
 								"value": "keep-alive",
 								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -1721,7 +1729,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTk4NTE4LCJleHAiOjE3MjMyMDIxMTgsIm5iZiI6MTcyMzE5ODUxOCwianRpIjoiczlhWkM4V3djQXdaTEhzOCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xszYHB6dwb77T7RxfWZErzfRwDWxqQApBki7XJ15nfQ",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1774,11 +1782,6 @@
 								"key": "Connection",
 								"value": "keep-alive",
 								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -1804,7 +1807,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTk4NTE4LCJleHAiOjE3MjMyMDIxMTgsIm5iZiI6MTcyMzE5ODUxOCwianRpIjoiczlhWkM4V3djQXdaTEhzOCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xszYHB6dwb77T7RxfWZErzfRwDWxqQApBki7XJ15nfQ",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -1858,11 +1861,6 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -1892,7 +1890,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMjc5OTE0LCJleHAiOjE3MjMyODM1MTQsIm5iZiI6MTcyMzI3OTkxNCwianRpIjoiamJBM2paZlR2REpyRlFrTyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-T5_cynjljEwJB3uOyci4e8w7grYnvEINbE6LH-uj28",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -2020,13 +2018,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTM0MzEzLCJleHAiOjE3MjMxMzc5MTMsIm5iZiI6MTcyMzEzNDMxNCwianRpIjoiMWdmeWt3czJhZnFGQ1o4MSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G7vw-kWCIny2DXQiggEHTspPQ2oH9NhOf50zVarlT6o",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTM0MzEzLCJleHAiOjE3MjMxMzc5MTMsIm5iZiI6MTcyMzEzNDMxNCwianRpIjoiMWdmeWt3czJhZnFGQ1o4MSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G7vw-kWCIny2DXQiggEHTspPQ2oH9NhOf50zVarlT6o",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -2068,11 +2072,6 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -2096,7 +2095,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -2150,36 +2149,31 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/api/product/2",
+							"raw": "{{BASE_URL}}/api/product/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"2"
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "delete product by id",
+					"name": "Delete product by id",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3MjMzMTIyNzQsImV4cCI6MTcyMzMxNjAxMSwibmJmIjoxNzIzMzEyNDExLCJqdGkiOiJwNFFremNXc0liY05SNmN6Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7Fpe5HK1vsOBwrbr3DAqz8yrVePAgyVAeJQNYGSfMDg",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -2233,36 +2227,31 @@
 								"value": "keep-alive",
 								"name": "connection",
 								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/api/product/4",
+							"raw": "{{BASE_URL}}/api/product/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"4"
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "update product",
+					"name": "Update product",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMzE1OTE3LCJleHAiOjE3MjMzMTk1MTcsIm5iZiI6MTcyMzMxNTkxNywianRpIjoiSm1pOElKYjF0bVZhbkVrSCIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gmgOYWk6Ib7VU7daHIhXwmW3XfZi6Iixx_q9Mnq317E",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -2366,14 +2355,14 @@
 							]
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/update-product/3",
+							"raw": "{{BASE_URL}}/api/update-product/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"update-product",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -2385,7 +2374,7 @@
 			"name": "Tax Rate",
 			"item": [
 				{
-					"name": "get current tax rate",
+					"name": "Get current tax rate",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2395,13 +2384,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMTA4NzA5LCJleHAiOjE3MjMxMTIzMDksIm5iZiI6MTcyMzEwODcwOSwianRpIjoiMWtuUm5teDlwNWZ2OVp4diIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gQf0bbIDT-9U4Ty5HtYUuOVcGNUm1KZ4ekSaoP2kt5A",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMTA4NzA5LCJleHAiOjE3MjMxMTIzMDksIm5iZiI6MTcyMzEwODcwOSwianRpIjoiMWtuUm5teDlwNWZ2OVp4diIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gQf0bbIDT-9U4Ty5HtYUuOVcGNUm1KZ4ekSaoP2kt5A",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -2460,12 +2455,6 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzIzMDMzMDQzLCJleHAiOjE3MjMwMzY2NDMsIm5iZiI6MTcyMzAzMzA0MywianRpIjoib3p4eVViZU9zdmZDNXVENyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.g1tX5w3nwRYzcDHcsTIxe9taSZK34M-wVJawrdkK90M",
-								"type": "text",
-								"disabled": true
 							}
 						],
 						"body": {
@@ -2491,14 +2480,14 @@
 					"response": []
 				},
 				{
-					"name": "update current tax rate",
+					"name": "Update current tax rate",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTM0MzEzLCJleHAiOjE3MjMxMzc5MTMsIm5iZiI6MTcyMzEzNDMxNCwianRpIjoiMWdmeWt3czJhZnFGQ1o4MSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G7vw-kWCIny2DXQiggEHTspPQ2oH9NhOf50zVarlT6o",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -2588,20 +2577,26 @@
 					"response": []
 				},
 				{
-					"name": "reset tax rate",
+					"name": "Reset tax rate",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTE4NzI0LCJleHAiOjE3MjMxMjIzMjQsIm5iZiI6MTcyMzExODcyNCwianRpIjoibVhZbTJaMjQyaGpEM1lNRyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.h9mvFEcArj14uJwj0A00k0fIf1Z9bKtJTYiBL0MQe7c",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIzMTE4NzI0LCJleHAiOjE3MjMxMjIzMjQsIm5iZiI6MTcyMzExODcyNCwianRpIjoibVhZbTJaMjQyaGpEM1lNRyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.h9mvFEcArj14uJwj0A00k0fIf1Z9bKtJTYiBL0MQe7c",
+								"name": "authorization",
+								"type": "text"
+							},
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
@@ -2642,11 +2637,6 @@
 								"key": "Connection",
 								"value": "keep-alive",
 								"name": "connection",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
 								"type": "text"
 							}
 						],

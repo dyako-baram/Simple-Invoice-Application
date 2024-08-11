@@ -5,7 +5,9 @@ This is a Laravel-based web application that manages products, suppliers, custom
 ## Note
 the `.env` file has been excluded from the `.gitignore` file for the sake of simplicity 
 
-make sure to set the Global Enviroment variable of the web server `http://127.0.0.1:8000` as `BASE_URL` in postman 
+make sure to set the Global Enviroment variables properly such is:
+- the web server `http://127.0.0.1:8000` as `BASE_URL`
+- the JWT Token as `TOEKN`
 
 ## Features
 - Log viewing using [Log viewer]('https://github.com/opcodesio/log-viewer')
@@ -59,3 +61,9 @@ Invoices: /api/invoices
 Customers: /api/customers
 For full API documentation, import the postman export file
 ```
+
+## Oder of Requests
+- User Must be Created First
+- Customer and/or Supplier Second
+- Product Third
+- Lastly Invoice

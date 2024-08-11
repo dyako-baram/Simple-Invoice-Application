@@ -32,7 +32,6 @@ class InvoiceController extends Controller
     {
         $validated = $request->validate([
             'customer_id' => 'required|exists:customers,id',
-            'invoice_date' => 'required|date',
             'invoice_lines' => 'required|array',
             'invoice_lines.*.item_id' => 'required|exists:products,id',
             'invoice_lines.*.quantity' => 'required|integer|min:1',
@@ -73,7 +72,7 @@ class InvoiceController extends Controller
 
                 $invoice = Invoice::create([
                     'invoice_unique_id' => $invoice_unique_id,
-                    'invoice_date' => $validated['invoice_date'],
+                    'invoice_date' => now(),
                     'customer_id' => $validated['customer_id'],
                     'tax_rate' => (float)$taxRate,
                     'invoice_total' => $invoice_total,
