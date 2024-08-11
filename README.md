@@ -7,7 +7,7 @@ This is a Laravel-based web application that manages products, suppliers, custom
 
 make sure to set the Global Enviroment variables properly such is:
 - the web server `http://127.0.0.1:8000` as `BASE_URL`
-- the JWT Token as `TOEKN`
+- the JWT Token as `TOKEN`
 
 ## Features
 - Log viewing using [Log viewer](https://github.com/opcodesio/log-viewer)
