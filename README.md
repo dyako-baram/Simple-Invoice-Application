@@ -3,14 +3,14 @@
 This is a Laravel-based web application that manages products, suppliers, customers, invoices, and more. The application provides RESTful API endpoints for managing resources and includes features like authentication, data validation, file handling,log viewing and database interactions.
 
 ## Note
-the `.env` file has been excluded from the `.gitignore` file for the sake of simplicity 
+- the `.env` file has been excluded from the `.gitignore` file for the sake of simplicity 
 
 make sure to set the Global Enviroment variables properly such is:
 - the web server `http://127.0.0.1:8000` as `BASE_URL`
 - the JWT Token as `TOEKN`
 
 ## Features
-- Log viewing using [Log viewer]('https://github.com/opcodesio/log-viewer')
+- Log viewing using [Log viewer](https://github.com/opcodesio/log-viewer)
 - User Authentication: Secured routes with user-specific data access.
 - Product Management: CRUD operations for products with supplier associations.
 - Invoice Management: Create and manage invoices with detailed line items.
@@ -18,7 +18,7 @@ make sure to set the Global Enviroment variables properly such is:
 - Customer Management: Handle customer records.
 - File Uploads: Supports image uploads for products.
 - API Rate Limiting: Protects against abuse by limiting the number of API requests.
-- Security: Protection against XSS and other common vulnerabilities.
+- Security: Protection against XSS and other common vulnerabilities using [laravel-xss-protection](https://github.com/protonemedia/laravel-xss-protection)
 
 ## Prerequisites
 Before running this application, ensure you have the latest version of the following applications are installed:
@@ -52,7 +52,7 @@ php artisan serve
 ```
 
 ## Usage:
-the [postman config file]('/Invoice.postman_collection.json') has sample data for each request, make changes as needed
+the [postman config file](https://github.com/dyako-baram/Simple-Invoice-Application/blob/master/Invoice.postman_collection.json) has sample data for each request, make changes as needed
 ```
 API Endpoints
 Products: /api/products
