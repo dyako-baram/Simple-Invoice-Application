@@ -62,7 +62,7 @@ Customers: /api/customers
 For full API documentation, import the postman export file
 ```
 
-## Oder of Requests
+## Order of Requests
 - User Must be Created First
 - Customer and/or Supplier Second
 - Product Third
